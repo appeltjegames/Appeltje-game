@@ -1,49 +1,45 @@
 body {
-    margin: 0;
+    background: #008000;
     font-family: Arial, sans-serif;
-    background-color: #3fa63f;
-}
-
-/* Appeltjes + kaasjes achtergrond */
-body::before {
-    content: "🍎 🧀 🍎 🧀 🍎 🧀 🍎 🧀";
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    font-size: 60px;
-    opacity: 0.15;
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    align-items: center;
-    pointer-events: none;
+    text-align: center;
+    color: white;
 }
 
 .container {
-    text-align: center;
-    margin-top: 80px;
-    color: white;
-    text-shadow: 2px 2px 3px black;
+    margin-top: 50px;
 }
 
-.blokje {
+.item {
     background: white;
     color: black;
-    width: 200px;
-    margin: 20px auto;
-    padding: 20px;
-    border-radius: 15px;
-    font-size: 24px;
-    font-weight: bold;
-    box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+    padding: 10px;
+    margin: 10px auto;
+    width: 250px;
+    border-radius: 10px;
+    box-shadow: 0 3px 6px rgba(0,0,0,0.3);
+}
+
+.item button {
+    margin-top: 10px;
+    padding: 8px 15px;
+    border: none;
     cursor: pointer;
-    transition: 0.2s;
+    background: #ff7676;
+    border-radius: 8px;
+    font-weight: bold;
 }
 
-.blokje:hover {
-    transform: scale(1.05);
-    background: #ffe8e8;
+.item button:hover {
+    background: #ff9494;
 }
 
+#collectBtn {
+    font-size: 20px;
+    padding: 15px 25px;
+    border: none;
+    background: orange;
+    color: black;
+    border-radius: 10px;
+    cursor: pointer;
+    margin: 20px;
+}
