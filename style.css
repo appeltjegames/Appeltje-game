@@ -1,1 +1,49 @@
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background-color: #3fa63f;
+}
+
+/* Appeltjes + kaasjes achtergrond */
+body::before {
+    content: "🍎 🧀 🍎 🧀 🍎 🧀 🍎 🧀";
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    font-size: 60px;
+    opacity: 0.15;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    pointer-events: none;
+}
+
+.container {
+    text-align: center;
+    margin-top: 80px;
+    color: white;
+    text-shadow: 2px 2px 3px black;
+}
+
+.blokje {
+    background: white;
+    color: black;
+    width: 200px;
+    margin: 20px auto;
+    padding: 20px;
+    border-radius: 15px;
+    font-size: 24px;
+    font-weight: bold;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+.blokje:hover {
+    transform: scale(1.05);
+    background: #ffe8e8;
+}
 
