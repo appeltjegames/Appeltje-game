@@ -2,19 +2,48 @@
 <html>
 <head>
     <meta charset="UTF-8">
-    <title>Homescreen</title>
+    <title>Appeltje Game</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-    <div class="container">
-        <h1>Welkom</h1>
+<div class="container">
+    <h1>🍎 Appeltje Game 🍎</h1>
+    <p id="appleCount">Appels: 0</p>
 
-        <div class="blokje">Level 1</div>
-        <div class="blokje">Bakkerij</div>
-        <div class="blokje">Winkel</div>
+    <button id="collectBtn">Verzamel Appeltje 🍎</button>
+
+    <h2>Winkel</h2>
+    <div id="shop">
+        <div class="item">
+            <span class="name">🍏 Groene Appel (Character 1)</span>
+            <span class="price">Kosten: 20</span>
+            <button class="buy" data-item="greenApple">Koop</button>
+        </div>
+
+        <div class="item">
+            <span class="name">🍎 Rode Appel Kid (Character 2)</span>
+            <span class="price">Kosten: 50</span>
+            <button class="buy" data-item="appleKid">Koop</button>
+        </div>
+
+        <div class="item">
+            <span class="name">🧀 Kaas-Appel (Character 3)</span>
+            <span class="price">Kosten: 80</span>
+            <button class="buy" data-item="cheeseApple">Koop</button>
+        </div>
+
+        <div class="item">
+            <span class="name">🍎🐝 Bij-Appel (Character 4)</span>
+            <span class="price">Kosten: 120</span>
+            <button class="buy" data-item="beeApple">Koop</button>
+        </div>
     </div>
 
-    <script src="script.js"></script>
+    <h2>Gekochte Characters</h2>
+    <div id="inventory"></div>
+</div>
+
+<script src="game.js"></script>
 </body>
 </html>
