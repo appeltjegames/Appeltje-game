@@ -1,45 +1,632 @@
+/* ====== BASIS ====== */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: Arial, sans-serif;
+}
+
 body {
-    background: #008000;
-    font-family: Arial, sans-serif;
-    text-align: center;
-    color: white;
+  background: #2e7d32;
+  color: #222;
 }
 
-.container {
-    margin-top: 50px;
+.hidden {
+  display: none;
 }
 
-.item {
-    background: white;
-    color: black;
-    padding: 10px;
-    margin: 10px auto;
-    width: 250px;
-    border-radius: 10px;
-    box-shadow: 0 3px 6px rgba(0,0,0,0.3);
+.screen {
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+  position: relative;
 }
 
-.item button {
-    margin-top: 10px;
-    padding: 8px 15px;
-    border: none;
-    cursor: pointer;
-    background: #ff7676;
-    border-radius: 8px;
-    font-weight: bold;
+.centered {
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
-.item button:hover {
-    background: #ff9494;
+.btn {
+  background: #ff9800;
+  color: #fff;
+  padding: 10px 20px;
+  border-radius: 8px;
+  border: none;
+  cursor: pointer;
+  font-weight: bold;
 }
 
-#collectBtn {
-    font-size: 20px;
-    padding: 15px 25px;
-    border: none;
-    background: orange;
-    color: black;
-    border-radius: 10px;
-    cursor: pointer;
-    margin: 20px;
+.btn:active {
+  transform: scale(0.97);
 }
+
+h1, h2, h3 {
+  text-align: center;
+  margin-bottom: 10px;
+}
+
+/* ====== LAADSCHERM ====== */
+#loading-screen {
+  background: #1b5e20;
+  color: #fff;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.logo {
+  font-size: 40px;
+  font-weight: bold;
+}
+
+.load-bar-wrapper {
+  width: 60%;
+  height: 20px;
+  border-radius: 10px;
+  background: #004d40;
+  overflow: hidden;
+}
+
+.load-bar {
+  width: 0%;
+  height: 100%;
+  background: #ffeb3b;
+  transition: width 0.2s linear;
+}
+
+/* ====== HOMEPAGE ====== */
+#home-screen {
+  background: #2e7d32;
+  position: relative;
+  padding: 20px;
+}
+
+#home-screen::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image:
+    radial-gradient(circle at 10% 20%, #c62828 0, #c62828 10px, transparent 11px),
+    radial-gradient(circle at 40% 60%, #c62828 0, #c62828 10px, transparent 11px),
+    radial-gradient(circle at 80% 30%, #c62828 0, #c62828 10px, transparent 11px),
+    radial-gradient(circle at 20% 80%, #c62828 0, #c62828 10px, transparent 11px);
+  opacity: 0.4;
+  pointer-events: none;
+}
+
+#home-content {
+  position: relative;
+  z-index: 1;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 30px;
+}
+
+.big-apple-spotlight {
+  margin-top: 20px;
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;
+  background: radial-gradient(circle at center, #ff5252 0, #b71c1c 60%);
+  position: relative;
+  box-shadow: 0 0 40px 10px rgba(255, 235, 59, 0.7);
+}
+
+.big-apple-spotlight::before {
+  content: "";
+  position: absolute;
+  top: -80px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 260px;
+  height: 260px;
+  background: radial-gradient(circle at center, rgba(255, 235, 59, 0.7), transparent 70%);
+  opacity: 0.8;
+  pointer-events: none;
+}
+
+.blocks-row {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 20px;
+}
+
+.home-block {
+  width: 150px;
+  height: 80px;
+  background: #ffeb3b;
+  border-radius: 12px;
+  border: 3px solid #fbc02d;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  cursor: pointer;
+  box-shadow: 0 4px 0 #f57f17;
+  font-weight: bold;
+}
+
+.home-block:active {
+  transform: translateY(2px);
+  box-shadow: 0 2px 0 #f57f17;
+}
+
+/* ====== SPELWEREELD ====== */
+#game-screen {
+  background: linear-gradient(#81d4fa 0, #81d4fa 40%, #4caf50 40%, #4caf50 100%);
+  position: relative;
+  padding: 10px;
+}
+
+.game-top-bar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 5px 10px;
+}
+
+.game-exit-btn {
+  background: #c62828;
+  color: #fff;
+  border-radius: 6px;
+  padding: 5px 10px;
+  border: none;
+  cursor: pointer;
+  font-size: 12px;
+}
+
+.apple-counter {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  background: rgba(255, 255, 255, 0.7);
+  padding: 4px 8px;
+  border-radius: 10px;
+}
+
+.apple-icon-small {
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  background: radial-gradient(circle at center, #ff5252 0, #b71c1c 60%);
+}
+
+.game-world {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 40px;
+  bottom: 80px;
+  overflow: hidden;
+}
+
+.game-background {
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(circle at 10% 10%, #8bc34a 0, #558b2f 40%, transparent 41%) repeat-x,
+    radial-gradient(circle at 30% 20%, #8bc34a 0, #558b2f 40%, transparent 41%) repeat-x,
+    radial-gradient(circle at 70% 15%, #8bc34a 0, #558b2f 40%, transparent 41%) repeat-x;
+  background-size: 200px 200px;
+  opacity: 0.4;
+}
+
+.cheese-rain {
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(#ffeb3b 0 0),
+    linear-gradient(#ffeb3b 0 0),
+    linear-gradient(#ffeb3b 0 0),
+    linear-gradient(#ffeb3b 0 0);
+  background-size: 8px 8px;
+  background-repeat: repeat;
+  background-position:
+    10% 0,
+    40% -40px,
+    70% -80px,
+    90% -20px;
+  opacity: 0.7;
+  animation: cheeseFall 3s linear infinite;
+  pointer-events: none;
+}
+
+@keyframes cheeseFall {
+  from { background-position-y: 0, -40px, -80px, -20px; }
+  to   { background-position-y: 200px, 160px, 120px, 180px; }
+}
+
+.gravel-path {
+  position: absolute;
+  left: 10%;
+  right: 10%;
+  bottom: 40px;
+  height: 80px;
+  background: #8d6e63;
+  border-radius: 40px;
+  box-shadow: inset 0 0 10px rgba(0,0,0,0.4);
+}
+
+.gravel-path::before {
+  content: "";
+  position: absolute;
+  inset: 10px;
+  background-image:
+    radial-gradient(circle, #bcaaa4 0, #bcaaa4 2px, transparent 3px);
+  background-size: 12px 12px;
+  opacity: 0.7;
+}
+
+.player {
+  position: absolute;
+  bottom: 60px;
+  left: 20%;
+  width: 40px;
+  height: 80px;
+}
+
+.player-head {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: radial-gradient(circle at center, #ff5252 0, #b71c1c 60%);
+  box-shadow: 0 0 10px rgba(255,235,59,0.7);
+}
+
+.player-body {
+  width: 30px;
+  height: 40px;
+  background: #c62828;
+  margin: 0 auto;
+  position: relative;
+}
+
+.player-legs {
+  position: absolute;
+  bottom: -20px;
+  left: 5px;
+  width: 20px;
+  height: 20px;
+  background: #2e7d32;
+}
+
+.platform {
+  position: absolute;
+  width: 120px;
+  height: 20px;
+  background: #5d4037;
+  border-radius: 10px;
+  box-shadow: 0 4px 0 #3e2723;
+}
+
+.platform::before {
+  content: "";
+  position: absolute;
+  inset: 3px;
+  background-image:
+    radial-gradient(circle, #8d6e63 0, #8d6e63 2px, transparent 3px);
+  background-size: 10px 10px;
+  opacity: 0.8;
+}
+
+.apple-vines {
+  position: absolute;
+  width: 140px;
+  height: 80px;
+  top: -70px;
+  left: -10px;
+}
+
+.apple-vines .vine {
+  position: absolute;
+  width: 2px;
+  height: 70px;
+  background: #2e7d32;
+}
+
+.apple-vines .vine:nth-child(1) { left: 20px; }
+.apple-vines .vine:nth-child(2) { left: 60px; }
+.apple-vines .vine:nth-child(3) { left: 100px; }
+
+.apple-vines .vine::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: -8px;
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  background: radial-gradient(circle at center, #ff5252 0, #b71c1c 60%);
+}
+
+.hole {
+  position: absolute;
+  bottom: 40px;
+  width: 120px;
+  height: 40px;
+  background: #3e2723;
+  border-radius: 50%;
+  overflow: hidden;
+}
+
+.hole::before {
+  content: "";
+  position: absolute;
+  inset: 5px;
+  border-radius: 50%;
+  background: #ffcc80;
+}
+
+.rolling-apple {
+  position: absolute;
+  bottom: 70px;
+  left: 5%;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: radial-gradient(circle at center, #ff5252 0, #b71c1c 60%);
+  box-shadow: 0 0 10px rgba(0,0,0,0.4);
+}
+
+.coin-apple {
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background: radial-gradient(circle at center, #ff5252 0, #b71c1c 60%);
+  box-shadow: 0 0 6px rgba(255,235,59,0.8);
+}
+
+/* ====== CONTROLS ====== */
+.controls {
+  position: absolute;
+  right: 10px;
+  bottom: 10px;
+  display: grid;
+  grid-template-columns: repeat(3, 40px);
+  grid-template-rows: repeat(2, 40px);
+  gap: 5px;
+}
+
+.control-btn {
+  width: 40px;
+  height: 40px;
+  border-radius: 8px;
+  border: 2px solid #555;
+  background: #eee;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 20px;
+  cursor: pointer;
+}
+
+.control-btn:active {
+  background: #ccc;
+}
+
+.control-up {
+  grid-column: 2 / 3;
+  grid-row: 1 / 2;
+}
+
+.control-left {
+  grid-column: 1 / 2;
+  grid-row: 2 / 3;
+}
+
+.control-down {
+  grid-column: 2 / 3;
+  grid-row: 2 / 3;
+}
+
+.control-right {
+  grid-column: 3 / 4;
+  grid-row: 2 / 3;
+}
+
+/* ====== BELONINGSSCHERM ====== */
+#reward-screen {
+  background: #2e7d32;
+  padding: 20px;
+}
+
+.reward-box {
+  max-width: 500px;
+  margin: 40px auto;
+  background: #4caf50;
+  border-radius: 16px;
+  padding: 20px;
+  text-align: center;
+  color: #fff;
+  box-shadow: 0 0 20px rgba(0,0,0,0.4);
+}
+
+.reward-apple-spotlight {
+  margin: 0 auto 20px;
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  background: radial-gradient(circle at center, #ff5252 0, #b71c1c 60%);
+  box-shadow: 0 0 30px rgba(255,235,59,0.9);
+  position: relative;
+}
+
+.reward-apple-spotlight::before {
+  content: "";
+  position: absolute;
+  inset: -30px;
+  border-radius: 50%;
+  background: radial-gradient(circle at center, rgba(255,235,59,0.7), transparent 70%);
+  opacity: 0.8;
+}
+
+/* ====== OPDRACHTENSCHERM ====== */
+#task-screen {
+  background: #2e7d32;
+  padding: 20px;
+}
+
+.task-box {
+  max-width: 600px;
+  margin: 40px auto;
+  background: #a5d6a7;
+  border-radius: 16px;
+  padding: 20px;
+  box-shadow: 0 0 20px rgba(0,0,0,0.4);
+}
+
+.task-camera {
+  margin-top: 20px;
+  width: 120px;
+  height: 80px;
+  border-radius: 12px;
+  background: #424242;
+  position: relative;
+  margin-left: auto;
+  margin-right: auto;
+  cursor: pointer;
+}
+
+.task-camera::before {
+  content: "";
+  position: absolute;
+  top: 15px;
+  left: 20px;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  background: #212121;
+}
+
+.task-camera::after {
+  content: "";
+  position: absolute;
+  top: 25px;
+  left: 30px;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  background: #90caf9;
+}
+
+.task-info {
+  margin-top: 10px;
+  font-size: 14px;
+  text-align: center;
+}
+
+/* ====== BAKKERIJ ====== */
+#bakery-screen {
+  background: #ffe0b2;
+  padding: 20px;
+}
+
+.bakery-title {
+  text-align: center;
+  margin-bottom: 10px;
+}
+
+.bakery-machine {
+  max-width: 600px;
+  margin: 0 auto;
+  background: #ffcc80;
+  border-radius: 16px;
+  padding: 20px;
+  box-shadow: 0 0 20px rgba(0,0,0,0.3);
+  position: relative;
+}
+
+.bakery-machine::before {
+  content: "KAAS-APPEL MACHINE";
+  position: absolute;
+  top: -20px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: #fb8c00;
+  color: #fff;
+  padding: 4px 10px;
+  border-radius: 10px;
+  font-size: 12px;
+  font-weight: bold;
+}
+
+.bakery-slots {
+  display: flex;
+  justify-content: space-around;
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+.bakery-slot {
+  width: 80px;
+  height: 80px;
+  border-radius: 12px;
+  border: 3px dashed #ffb300;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 12px;
+  text-align: center;
+  background: rgba(255,255,255,0.4);
+}
+
+.bakery-slot.filled {
+  border-style: solid;
+  background: #fff8e1;
+  font-weight: bold;
+}
+
+.kaasappel-mobiel {
+  margin-top: 20px;
+  width: 220px;
+  height: 90px;
+  border-radius: 40px;
+  background: #2e7d32;
+  position: relative;
+  margin-left: auto;
+  margin-right: auto;
+  box-shadow: 0 6px 0 #1b5e20;
+}
+
+.kaasappel-mobiel::before,
+.kaasappel-mobiel::after {
+  content: "";
+  position: absolute;
+  bottom: -20px;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: #212121;
+}
+
+.kaasappel-mobiel::before {
+  left: 30px;
+}
+
+.kaasappel-mobiel::after {
+  right: 30px;
+}
+
+.kaasappel-mobiel-decor {
+  position: absolute;
+  inset: 10px;
+  background-image:
+    radial-gradient(circle, #ffeb3b 0, #ffeb3b 6px, transparent 7px),
+    radial-gradient(circle, #ffcc80 0, #ffcc80 6px, transparent 7px);
+  background-size: 40px 40px;
+  opacity: 0.9;
+}
+
+/* ====== GARDEROBE ====== */
+#wardrobe-screen {
+  background: #2e7d32;
+  padding: 20px;
+  position: relative;
+}
+
+#ward
