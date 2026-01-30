@@ -50,25 +50,8 @@ function showScreen(id) {
     updateCoins();
   }
 }
-
-// ====== LAADSCHERM ======
 document.addEventListener('DOMContentLoaded', () => {
-  const loadBar = document.getElementById('load-bar');
-  let loadProgress = 0;
-
-  const loadInterval = setInterval(() => {
-    loadProgress += 5;
-    if (loadBar) {
-      loadBar.style.width = loadProgress + '%';
-    }
-    if (loadProgress >= 100) {
-      clearInterval(loadInterval);
-      setTimeout(() => {
-        showScreen('home-screen');
-      }, 400);
-    }
-  }, 150);
-
+  showScreen('home-screen');
   setupHome();
   setupGame();
   setupReward();
@@ -76,6 +59,7 @@ document.addEventListener('DOMContentLoaded', () => {
   setupBakery();
   setupWardrobe();
 });
+
 
 // ====== HOMEPAGE ======
 function setupHome() {
