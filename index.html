@@ -1,182 +1,29 @@
 <!DOCTYPE html>
 <html lang="nl">
 <head>
-  <meta charset="UTF-8">
-  <title>Kaasje Appel Game</title>
-  <link rel="stylesheet" href="style.css">
+    <meta charset="UTF-8">
+    <title>Appel Avontuur</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-  <!-- HOMEPAGE -->
-  <div id="home-screen" class="screen hidden">
-    <div id="home-content">
-      <div class="big-apple-spotlight"></div>
-      <h1>Kaasje Appel Avontuur</h1>
-      <div class="blocks-row">
-        <div class="home-block" id="block-level">Level 1</div>
-        <div class="home-block" id="block-bakery">Bakkerij</div>
-        <div class="home-block" id="block-wardrobe">Garderobe</div>
-        <div class="home-block" id="block-pin">Pinpas</div>
-      </div>
-    </div>
-  </div>
-
-  <!-- SPELWEREELD -->
-  <div id="game-screen" class="screen hidden">
-    <div class="game-top-bar">
-      <button class="game-exit-btn" id="btn-exit-game">Stoppen</button>
-      <div class="apple-counter">
-        <div class="apple-icon-small"></div>
-        <span id="apple-count">0</span>
-      </div>
+<div id="home">
+    <div class="appel-spotlight">
+        <img src="img/appel.png" class="appel">
+        <div class="stralen"></div>
     </div>
 
-    <div class="game-world">
-      <div class="game-background"></div>
-      <div class="cheese-rain"></div>
-      <div class="gravel-path"></div>
-
-      <div class="player" id="player">
-        <div class="player-head"></div>
-        <div class="player-body">
-          <div class="player-legs"></div>
-        </div>
-      </div>
-
-      <div class="platform" style="left: 40%; bottom: 150px;">
-        <div class="apple-vines">
-          <div class="vine"></div>
-          <div class="vine"></div>
-          <div class="vine"></div>
-        </div>
-      </div>
-
-      <div class="platform" style="left: 70%; bottom: 220px;"></div>
-
-      <div class="hole" style="left: 35%;"></div>
-      <div class="hole" style="left: 65%;"></div>
-
-      <div class="rolling-apple"></div>
-
-      <div class="coin-apple" style="left: 42%; bottom: 210px;"></div>
-      <div class="coin-apple" style="left: 46%; bottom: 230px;"></div>
-      <div class="coin-apple" style="left: 50%; bottom: 250px;"></div>
-      <div class="coin-apple" style="left: 54%; bottom: 230px;"></div>
-      <div class="coin-apple" style="left: 58%; bottom: 210px;"></div>
+    <div class="menu">
+        <div class="blok" onclick="startGame()">Level 1</div>
+        <div class="blok" onclick="openBakkerij()">Bakkerij</div>
+        <div class="blok" onclick="openGarderobe()">Garderobe</div>
+        <div class="blok" onclick="openPinpas()">Pinpas</div>
     </div>
+</div>
 
-    <div class="controls">
-      <div class="control-btn control-up">↑</div>
-      <div class="control-btn control-left">←</div>
-      <div class="control-btn control-down">↓</div>
-      <div class="control-btn control-right">→</div>
-    </div>
-  </div>
+<canvas id="gameCanvas"></canvas>
 
-  <!-- BELONINGSSCHERM -->
-  <div id="reward-screen" class="screen hidden">
-    <div class="reward-box">
-      <div class="reward-apple-spotlight"></div>
-      <h2 id="reward-title">Gefeliciteerd!</h2>
-      <p id="reward-text"></p>
-      <button class="btn" id="btn-reward-next">Verder</button>
-    </div>
-  </div>
-
-  <!-- OPDRACHTENSCHERM -->
-  <div id="task-screen" class="screen hidden">
-    <div class="task-box">
-      <h2 id="task-title">Victory!</h2>
-      <p id="task-subtitle">
-        Je hebt level <span id="task-level">1</span> voltooid. Voer nu de opdracht uit en maak een foto!
-      </p>
-      <h3>Opdracht</h3>
-      <p id="task-text"></p>
-
-      <div class="task-camera" id="task-camera"></div>
-      <div class="task-info" id="task-info">Klik op de camera om een bewijsfoto te maken.</div>
-
-      <div style="text-align:center; margin-top:20px;">
-        <button class="btn" id="btn-task-continue">Ga naar volgend level</button>
-      </div>
-    </div>
-  </div>
-
-  <!-- BAKKERIJ -->
-  <div id="bakery-screen" class="screen hidden">
-    <h2 class="bakery-title">Bakkerij</h2>
-    <div class="bakery-machine">
-      <div class="bakery-slots">
-        <div class="bakery-slot" id="slot-apple">Appel</div>
-        <div class="bakery-slot" id="slot-cheese">Kaas</div>
-        <div class="bakery-slot" id="slot-bread">Brood</div>
-        <div class="bakery-slot" id="slot-puff">Bladerdeeg</div>
-      </div>
-      <div id="bakery-info">Verzamel alle ingrediënten door levels te halen.</div>
-      <button class="btn" id="btn-bakery-go">Go!</button>
-
-      <div id="bakery-car" class="kaasappel-mobiel hidden">
-        <div class="kaasappel-mobiel-decor"></div>
-      </div>
-    </div>
-
-    <button class="btn" onclick="showScreen('home-screen')">Terug</button>
-  </div>
-
-  <!-- GARDEROBE -->
-  <div id="wardrobe-screen" class="screen hidden">
-    <div class="wardrobe-content">
-      <h2>Garderobe</h2>
-
-      <div class="avatar-spotlight">
-        <div class="avatar" id="main-avatar">
-          <div class="avatar-head">
-            <div class="avatar-hair-blond-pony"></div>
-            <div class="avatar-eyes">
-              <div class="avatar-eye"></div>
-              <div class="avatar-eye"></div>
-            </div>
-          </div>
-          <div class="avatar-body"></div>
-          <div class="avatar-legs">
-            <div class="avatar-shoes"></div>
-          </div>
-        </div>
-      </div>
-
-      <div class="coin-display">
-        Munten: <span id="coin-count">0</span>
-      </div>
-
-      <div class="wardrobe-options">
-        <div class="wardrobe-card wardrobe-selected" data-avatar="boy-free">
-          <h4>Jongen (gratis)</h4>
-        </div>
-
-        <div class="wardrobe-card" data-avatar="girl-curly" data-price="30">
-          <h4>Meisje krullen</h4>
-          <div class="wardrobe-price">30 munten</div>
-        </div>
-
-        <div class="wardrobe-card" data-avatar="boy-blond" data-price="30">
-          <h4>Jongen blond</h4>
-          <div class="wardrobe-price">30 munten</div>
-        </div>
-      </div>
-
-      <button class="btn" onclick="showScreen('home-screen')">Terug</button>
-    </div>
-  </div>
-
-  <!-- PINPAS -->
-  <div id="pin-screen" class="screen hidden">
-    <div class="centered" style="flex-direction:column; gap:20px;">
-      <h2>Sijsjesberg Pinpas</h2>
-      <p>Hier komt later je appelsap‑saldo.</p>
-      <button class="btn" onclick="showScreen('home-screen')">Terug</button>
-    </div>
-  </div>
-
-  <script src="script.js"></script>
+<script src="game.js"></script>
 </body>
 </html>
+
