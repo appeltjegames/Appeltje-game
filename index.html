@@ -2,28 +2,51 @@
 <html lang="nl">
 <head>
     <meta charset="UTF-8">
-    <title>Appel Avontuur</title>
+    <title>Homepage</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-<div id="home">
-    <div class="appel-spotlight">
-        <img src="img/appel.png" class="appel">
-        <div class="stralen"></div>
+    <div class="apple-container">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/1/15/Red_Apple.jpg" 
+             alt="appel" class="apple">
     </div>
 
-    <div class="menu">
-        <div class="blok" onclick="startGame()">Level 1</div>
-        <div class="blok" onclick="openBakkerij()">Bakkerij</div>
-        <div class="blok" onclick="openGarderobe()">Garderobe</div>
-        <div class="blok" onclick="openPinpas()">Pinpas</div>
+    <div class="blocks">
+        <div class="block" onclick="openScreen('level1.html')">Level 1</div>
+        <div class="block" onclick="openScreen('bakkerij.html')">Bakkerij</div>
+        <div class="block" onclick="openScreen('garderobe.html')">Garderobe</div>
+        <div class="block" onclick="openScreen('pinpas.html')">Pinpas</div>
     </div>
-</div>
 
-<canvas id="gameCanvas"></canvas>
-
-<script src="game.js"></script>
+    <script src="game.js"></script>
 </body>
 </html>
-
+<!DOCTYPE html>
+<html>
+<body style="background:#fff; text-align:center;">
+<h1>Level 1</h1>
+<p>Hier komt jouw level 1 content.</p>
+</body>
+</html>
+<!DOCTYPE html>
+<html>
+<body style="background:#fff; text-align:center;">
+<h1>Bakkerij</h1>
+<p>Welkom in de bakkerij.</p>
+</body>
+</html>
+<!DOCTYPE html>
+<html>
+<body style="background:#fff; text-align:center;">
+<h1>Garderobe</h1>
+<p>Hier kun je outfits kiezen.</p>
+</body>
+</html>
+<!DOCTYPE html>
+<html>
+<body style="background:#fff; text-align:center;">
+<h1>Pinpas</h1>
+<p>Betaalscherm komt hier.</p>
+</body>
+</html>
