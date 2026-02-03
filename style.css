@@ -1,67 +1,51 @@
 body {
     margin: 0;
+    padding: 0;
+    background-color: #3fa63f; /* groene achtergrond */
     font-family: Arial, sans-serif;
-    background: #ffeaa7;
-}
-
-/* Homepage */
-#home {
     text-align: center;
-    padding-top: 30px;
 }
 
-.appel-spotlight {
-    position: relative;
-    display: inline-block;
+/* Appel bovenaan */
+.apple-container {
+    margin-top: 20px;
 }
 
-.appel {
-    width: 200px;
-    z-index: 2;
-    position: relative;
+.apple {
+    width: 250px;
+    height: auto;
+    filter: drop-shadow(0 0 20px white); /* spotlight effect */
 }
 
-.stralen {
-    position: absolute;
-    top: 20px;
-    left: 20px;
-    width: 160px;
-    height: 160px;
-    background: radial-gradient(circle, rgba(255,255,0,0.6), transparent);
-    border-radius: 50%;
-    z-index: 1;
-}
-
-.menu {
+/* Blokken */
+.blocks {
     margin-top: 40px;
     display: flex;
     justify-content: center;
-    gap: 20px;
+    flex-wrap: wrap;
+    gap: 25px;
 }
 
-.blok {
-    width: 150px;
-    height: 150px;
-    background: #fdcb6e;
-    border: 4px solid #e17055;
-    border-radius: 20px;
+.block {
+    width: 180px;
+    height: 120px;
+    background-color: #ffd84d; /* geel */
+    border: 4px solid #e6b800;
+    border-radius: 15px;
+    font-size: 24px;
+    font-weight: bold;
+    color: #5a3c00;
     display: flex;
     justify-content: center;
     align-items: center;
-    font-size: 22px;
-    font-weight: bold;
     cursor: pointer;
+
+    background-image: url('https://upload.wikimedia.org/wikipedia/commons/4/4c/Cheese_icon.png');
+    background-size: 60px;
+    background-repeat: repeat;
+}
+
+.block:hover {
+    transform: scale(1.05);
     transition: 0.2s;
-}
-
-.blok:hover {
-    transform: scale(1.1);
-}
-
-/* Game canvas */
-#gameCanvas {
-    display: none;
-    background: #74b72e;
-    width: 100vw;
-    height: 100vh;
 }
